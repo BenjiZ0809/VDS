@@ -97,7 +97,7 @@ function Result() {
           transition={{ duration: 0.5 }}
           style={{
             position: "absolute",
-            top: "5%",
+            top: "4%",
             transform: "translateY(-50%)",
             width: "50%",
             zIndex: 2,
@@ -116,7 +116,7 @@ function Result() {
               style={{
                 position: "absolute",
                 right: "7%",
-                top: "5%",
+                top: "4%",
                 width: "40%",
                 height: "100%",
                 zIndex: 1,

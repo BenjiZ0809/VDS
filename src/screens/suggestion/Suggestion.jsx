@@ -99,7 +99,7 @@ function Suggestion({ componentSet }) {
             </motion.div>
           ))
         ) : (
-          <p>No components found for the given query.</p>
+          <Typography>No components found for the given query.</Typography>
         )}
       </motion.div>
     </Utility>

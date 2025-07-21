@@ -181,6 +181,7 @@ function Query() {
               style={{ width: "100%", height: "48px", fontSize: "16px" }}
               onClick={() => resetQuery()}
               colorScheme="secondary"
+              type="button"
             >
               Reset
             </motion.button>
