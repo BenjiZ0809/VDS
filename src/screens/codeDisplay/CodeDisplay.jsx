@@ -1,6 +1,16 @@
-import React, { useEffect, useRef } from "react";
-import { Utility, Button } from "@visa/nova-react";
+import React, { useEffect, useRef, useState } from "react";
+import { Utility, Button, Tooltip } from "@visa/nova-react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import {
+  offset,
+  safePolygon,
+  useDismiss,
+  useFloating,
+  useFocus,
+  useHover,
+  useInteractions,
+  useRole,
+} from "@floating-ui/react";
 import { darcula } from "react-syntax-highlighter/dist/esm/styles/prism";
 import Login from "../../components/login/Login";
 import loginDemo from "../../components/login/Login.jsx?raw";
@@ -11,6 +21,27 @@ import Modal from "../../components/modal/modal";
 import modalDemo from "../../components/modal/modal.jsx?raw";
 
 function CodeDisplay({ keyWord }) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const { x, y, strategy, refs, context } = useFloating({
+    middleware: [offset(2)],
+    open: isOpen,
+    onOpenChange: setIsOpen,
+    placement: "left",
+  });
+
+  const dismiss = useDismiss(context);
+  const focus = useFocus(context);
+  const hover = useHover(context);
+  const role = useRole(context, { role: "tooltip" });
+
+  const { getReferenceProps, getFloatingProps } = useInteractions([
+    dismiss,
+    focus,
+    hover,
+    role,
+  ]);
+
   const codeMap = {
     login: loginDemo,
     signup: signupDemo,
@@ -71,6 +102,8 @@ function CodeDisplay({ keyWord }) {
           iconButton
           aria-label="Copy code to clipboard"
           colorScheme="secondary"
+          ref={refs.setReference}
+          {...getReferenceProps()}
           onClick={() => navigator.clipboard.writeText(snippet)}
           style={{
             marginTop: "20px",
@@ -80,6 +113,20 @@ function CodeDisplay({ keyWord }) {
         >
           <VisaCopyLow></VisaCopyLow>
         </Button>
+        {isOpen && (
+          <Tooltip
+            ref={refs.setFloating}
+            style={{
+              left: x,
+              position: strategy,
+              top: y,
+              width: "fit-content",
+            }}
+            {...getFloatingProps()}
+          >
+            Copy Code
+          </Tooltip>
+        )}
         <SyntaxHighlighter
           language="javascript"
           style={darcula}
