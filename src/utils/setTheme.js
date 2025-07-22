@@ -1,6 +1,6 @@
 export const switchTheme = (themeName) => {
   const existing = document.getElementById("visa-theme");
-  const href = `public/nova-styles/themes/${themeName}/index.css`;
+  const href = `/nova-styles/themes/${themeName}/index.css`;
 
   if (existing) {
     // @ts-ignore
