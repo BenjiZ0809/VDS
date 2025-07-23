@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Typography,
   Utility,
@@ -9,7 +9,7 @@ import {
   Link,
 } from "@visa/nova-react";
 import { motion } from "framer-motion";
-import { componentInfoMap } from "../../logic/suggestionMapping";
+import { componentInfoMap } from "../../logic/SuggestionMapping";
 import { VisaMaximizeTiny } from "@visa/nova-icons-react";
 
 function Suggestion({ componentSet }) {

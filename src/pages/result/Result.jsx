@@ -4,30 +4,52 @@ import { useLocation, useNavigate } from "react-router-dom";
 import Suggestion from "../../screens/suggestion/Suggestion.jsx";
 import CodeDisplay from "../../screens/codeDisplay/CodeDisplay.jsx";
 import { motion, AnimatePresence } from "framer-motion";
+import { useSavedQueries } from "../../context/SavedQueriesContext.jsx";
 
 function Result() {
   const location = useLocation();
   const navigate = useNavigate();
-  const componentSet = location.state?.componentSet || new Set();
+  const mode = location.state?.mode;
+  const componentSet = location.state?.componentSet;
+
   const keyWord = location.state?.keyWord || new Set();
-  const kw = Array.from(keyWord)[0];
+  const kw =
+    mode === "query" ? Array.from(keyWord)[0] : location.state?.keyWord;
   const query = location.state?.query || "";
   /** @type {React.RefObject<HTMLElement | null>} */
   const pageInitRef = useRef(null);
 
   const [showCode, setShowCode] = useState(false);
+  const [savedData, setSavedData] = useState([]);
+  const { savedQueries, setSavedQueries } = useSavedQueries();
 
   useEffect(() => {
     if (pageInitRef.current) {
       pageInitRef.current.focus();
     }
-  }, []);
+    setShowCode(false);
+  }, [query]);
 
   const onSave = () => {
-    const savedData = {};
-    console.log("onsave");
-    console.log(query);
-    console.log(Array.from(keyWord)[0]);
+    const savedQueries = JSON.parse(
+      localStorage.getItem("savedQueries") || "[]"
+    );
+    const newEntry = {
+      query: query,
+      components: Array.from(componentSet),
+      keyWord: kw,
+      timestamp: new Date().toISOString(),
+    };
+    const exist = savedQueries.some((entry) => entry.query === query);
+    const updated = exist ? savedQueries : [newEntry, ...savedQueries];
+    // @ts-ignore
+    setSavedQueries(updated);
+    localStorage.setItem("savedQueries", JSON.stringify(updated));
+    if (exist) {
+      alert("Query already exists.");
+    } else {
+      alert("Query saved");
+    }
   };
 
   return (
@@ -53,7 +75,7 @@ function Result() {
             Show Code
           </motion.button>
         )}
-        {showCode && (
+        {showCode && mode === "query" && (
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -62,7 +84,7 @@ function Result() {
             onClick={() => onSave()}
             style={{ width: "128px" }}
           >
-            Save
+            Save Result
           </motion.button>
         )}
         <motion.button
@@ -73,7 +95,7 @@ function Result() {
           onClick={() => navigate("/")}
           style={{ width: "128px" }}
         >
-          Back to Previous
+          Back to Home
         </motion.button>
       </Utility>
 
