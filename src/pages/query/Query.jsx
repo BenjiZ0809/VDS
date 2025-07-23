@@ -17,7 +17,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import {
   keywordComponentMap,
   keywordAliases,
-} from "../../logic/SuggestionMapping";
+} from "../../logic/suggestionMapping.js";
 
 function Query() {
   const [query, setQuery] = useState("");
