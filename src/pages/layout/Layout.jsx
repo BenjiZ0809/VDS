@@ -13,7 +13,7 @@ import {
 } from "@visa/nova-react";
 import React, { useEffect, useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
-import { switchTheme } from "../../utils/SetTheme.js";
+import { switchTheme } from "../../utils/SetTheme";
 import {
   useFloating,
   useInteractions,
