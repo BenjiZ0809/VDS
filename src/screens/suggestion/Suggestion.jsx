@@ -9,7 +9,7 @@ import {
   Link,
 } from "@visa/nova-react";
 import { motion } from "framer-motion";
-import { componentInfoMap } from "../../logic/SuggestionMapping";
+import { componentInfoMap } from "../../logic/suggestionMapping";
 import { VisaMaximizeTiny } from "@visa/nova-icons-react";
 
 function Suggestion({ componentSet }) {
