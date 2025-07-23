@@ -29,7 +29,15 @@ export const keywordComponentMap = {
     "DialogContent",
     "Typography",
   ],
-  navigation: [],
+  contact: [
+    "Utility",
+    "Button",
+    "InputContainer",
+    "Input",
+    "Label",
+    "Textarea",
+  ],
+  table: ["TableWrapper", "Table", "Thead", "Tr", "Tbody", "Th", "Td"],
 };
 
 export const keywordAliases = {
@@ -40,6 +48,9 @@ export const keywordAliases = {
   signup: "signup",
   modal: "modal",
   dialog: "modal",
+  contact: "contact",
+  table: "table",
+  chart: "table",
 };
 
 export const componentInfoMap = {
@@ -113,5 +124,49 @@ export const componentInfoMap = {
     name: "DialogContent",
     description: "Content container for dialog pop-up windows.",
     link: "https://design.visa.com/components/dialog/?code_library=react&version=2.5.4#api",
+  },
+  Textarea: {
+    name: "Textarea",
+    description: "Multi-line text input for larger blocks of text.",
+    link: "https://design.visa.com/components/input/?code_library=react&version=2.5.4#api",
+  },
+  TableWrapper: {
+    name: "TableWrapper",
+    description:
+      "Container for a table that adds a border with a curved radius to the table.",
+    link: "https://design.visa.com/components/table/?code_library=react&version=2.5.4#key-value-static-tables",
+  },
+  Table: {
+    name: "Table",
+    description:
+      "Grid that organizes information, enabling data interaction, manipulation, and criteria-based analysis using columns and rows.",
+    link: "https://design.visa.com/components/table/?code_library=react&version=2.5.4#key-value-static-tables",
+  },
+  Thead: {
+    name: "Thead",
+    description: "Table head component that contains all the th cells.",
+    link: "https://design.visa.com/components/table/?code_library=react&version=2.5.4#key-value-static-tables",
+  },
+  Tr: {
+    name: "Tr",
+    description: "Table row component.",
+    link: "https://design.visa.com/components/table/?code_library=react&version=2.5.4#key-value-static-tables",
+  },
+  Th: {
+    name: "Th",
+    description:
+      "Table header cell component usually used for titles and column/row descriptions.",
+    link: "https://design.visa.com/components/table/?code_library=react&version=2.5.4#key-value-static-tables",
+  },
+  Tbody: {
+    name: "Tbody",
+    description: "Table body component that contains all the tr and td cells.",
+    link: "https://design.visa.com/components/table/?code_library=react&version=2.5.4#key-value-static-tables",
+  },
+  Td: {
+    name: "Td",
+    description:
+      "Table data cell component typically used for displaying data and content.",
+    link: "https://design.visa.com/components/table/?code_library=react&version=2.5.4#key-value-static-tables",
   },
 };

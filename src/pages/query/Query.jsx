@@ -17,7 +17,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import {
   keywordComponentMap,
   keywordAliases,
-} from "../../logic/suggestionMapping";
+} from "../../logic/SuggestionMapping";
 
 function Query() {
   const [query, setQuery] = useState("");
@@ -85,8 +85,13 @@ function Query() {
     }
     setError(false);
     setErrMsg("");
-    navigate("/result", {
-      state: { query: query, keyWord: keyWord, componentSet: componentSet },
+    navigate(`/result`, {
+      state: {
+        mode: "query",
+        query: query,
+        keyWord: keyWord,
+        componentSet: componentSet,
+      },
     });
   };
 
@@ -180,7 +185,7 @@ function Query() {
               className="v-button v-button-secondary"
               style={{ width: "100%", height: "48px", fontSize: "16px" }}
               onClick={() => resetQuery()}
-              colorScheme="secondary"
+              colorscheme="secondary"
               type="button"
             >
               Reset

@@ -16,9 +16,13 @@ import Login from "../../components/login/Login";
 import loginDemo from "../../components/login/Login.jsx?raw";
 import Signup from "../../components/signup/Signup";
 import signupDemo from "../../components/signup/Signup.jsx?raw";
-import { VisaCopyLow } from "@visa/nova-icons-react";
-import Modal from "../../components/modal/modal";
+import Contact from "../../components/contact/Contact";
+import contactDemo from "../../components/contact/Contact.jsx?raw";
+import Modal from "../../components/modal/Modal";
 import modalDemo from "../../components/modal/modal.jsx?raw";
+import Chart from "../../components/chart/Chart";
+import chartDemo from "../../components/chart/Chart.jsx?raw";
+import { VisaCopyLow } from "@visa/nova-icons-react";
 
 function CodeDisplay({ keyWord }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -46,6 +50,8 @@ function CodeDisplay({ keyWord }) {
     login: loginDemo,
     signup: signupDemo,
     modal: modalDemo,
+    contact: contactDemo,
+    table: chartDemo,
   };
   const snippet = codeMap[keyWord] || "No code provided";
 
@@ -53,8 +59,6 @@ function CodeDisplay({ keyWord }) {
   const codeRef = useRef(null);
 
   useEffect(() => {
-    console.log(keyWord);
-
     if (codeRef.current) {
       codeRef.current.focus();
     }
@@ -90,6 +94,8 @@ function CodeDisplay({ keyWord }) {
         {keyWord === "login" && <Login></Login>}
         {keyWord === "signup" && <Signup></Signup>}
         {keyWord === "modal" && <Modal></Modal>}
+        {keyWord === "contact" && <Contact></Contact>}
+        {keyWord === "table" && <Chart></Chart>}
       </Utility>
 
       <Utility
