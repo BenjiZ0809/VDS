@@ -11,9 +11,9 @@ import {
   DropdownContainer,
   Typography,
 } from "@visa/nova-react";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
-import { switchTheme } from "../../utils/SetTheme";
+import { switchTheme } from "../../utils/SetTheme.js";
 import {
   useFloating,
   useInteractions,
