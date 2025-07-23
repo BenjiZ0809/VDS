@@ -18,7 +18,7 @@ import Signup from "../../components/signup/Signup";
 import signupDemo from "../../components/signup/Signup.jsx?raw";
 import Contact from "../../components/contact/Contact";
 import contactDemo from "../../components/contact/Contact.jsx?raw";
-import Modal from "../../components/modal/Modal";
+import Modal from "../../components/modal/Modal.jsx";
 import modalDemo from "../../components/modal/Modal.jsx?raw";
 import Chart from "../../components/chart/Chart";
 import chartDemo from "../../components/chart/Chart.jsx?raw";
